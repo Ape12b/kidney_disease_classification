@@ -31,7 +31,7 @@ pip install -r .\requirements.txt
 ```
 ## Model used: VGG-16 (Visual Geometry Group Model)
 
-![VGG-16](\research\images\vgg16.png)
+![VGG-16](/research/images/vgg16.png)
 
 
 VGG-16 is a convolutional neural network (CNN) architecture proposed by the Visual Geometry Group at the University of Oxford. It gained popularity for its simplicity and effectiveness in image classification tasks. The "16" in VGG-16 refers to the total number of weight layers in the network.
@@ -57,7 +57,6 @@ VGG-16 is a convolutional neural network (CNN) architecture proposed by the Visu
 ### Fully Connected Layers
 
 - Three fully connected layers with 4096, 4096, and 1000 neurons, respectively.
-- The last layer has 1000 neurons for the number of classes in the ImageNet dataset.
 
 ### Activation Function
 
@@ -73,6 +72,7 @@ VGG-16 is a convolutional neural network (CNN) architecture proposed by the Visu
 
 VGG-16 achieved excellent results in the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) 2014, demonstrating the effectiveness of deep CNNs for image classification tasks. While surpassed by newer architectures, VGG-16 remains a benchmark in deep learning development.
 
+Here, the last layer has 2 neurons for the number of classes in the Kidney classification dataset.
 
 ### Notes:
 
