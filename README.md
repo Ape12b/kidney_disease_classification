@@ -10,9 +10,7 @@ md_content = """
 git clone https://github.com/Ape12b/kidney_disease_classification.git
 
 2. Create a virtual environment and activate it
-
-pyhton -m venv .venv
+python -m venv .venv
 
 3) Install requirements
-
 pip install -r .\requirements.txt
