@@ -11,3 +11,7 @@ python -m venv .venv
 
 ### 3. Install requirements
 pip install -r .\requirements.txt
+
+### 4. Create a logging module
+
+### 5. Use
