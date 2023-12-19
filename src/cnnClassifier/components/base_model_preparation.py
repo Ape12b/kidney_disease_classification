@@ -8,9 +8,9 @@ class PrepareBaseModel:
     
     def download(self):
         '''
-        Fetch data from G-Drive
+        Download model from Keras
         '''
-        self.model = tf.keras.applications.VGG16(
+        self.model = tf.keras.applications.vgg16.VGG16(
             include_top=self.config.params_include_top,
             weights=self.config.params_weights,
             input_shape=self.config.params_image_size
@@ -19,7 +19,7 @@ class PrepareBaseModel:
     
     def update(self):
         self.updated_model=self._update_model(freeze_all=True,
-                                            freeze_till=0,
+                                            freeze_till=None,
                                             model=self.model,
                                             classes=self.config.params_classes,
                                             learning_rate=self.config.params_learning_rate)
@@ -37,20 +37,20 @@ class PrepareBaseModel:
             for layer in model.layers[:freeze_till]:
                 layer.trainable = True
         
-        flatten_in=tf.keras.layers.Flatten()(model.output)
-        predictions=tf.keras.layers.Dense(
-            activation="softmax",
-            units=classes
+        flatten_in = tf.keras.layers.Flatten()(model.output)
+        prediction = tf.keras.layers.Dense(
+            units=classes,
+            activation="softmax"
         )(flatten_in)
-        
+
         updated_model = tf.keras.models.Model(
-            inputs = flatten_in,
-            outputs = predictions
+            inputs=model.input,
+            outputs=prediction
         )
-        
+
         updated_model.compile(
-            optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
-            loss=tf.keras.losses.CategoricalCrossentropy(),
+            optimizer=tf.keras.optimizers.SGD(learning_rate=learning_rate),
+            loss=tf.keras.losses.SparseCategoricalCrossentropy(),
             metrics=["accuracy"]
         )
         
