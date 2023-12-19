@@ -31,7 +31,7 @@ pip install -r .\requirements.txt
 ```
 ## Model used: VGG-16 (Visual Geometry Group Model)
 
-![VGG-16](research/images/vgg16.png)
+![VGG-16](/research/images/vgg16.png)
 
 
 VGG-16 is a convolutional neural network (CNN) architecture proposed by the Visual Geometry Group at the University of Oxford. It gained popularity for its simplicity and effectiveness in image classification tasks. The "16" in VGG-16 refers to the total number of weight layers in the network.
