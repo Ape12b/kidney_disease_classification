@@ -20,7 +20,7 @@ pip install -r .\requirements.txt
 ### Notes:
 
 1. Used ConfigBox to access calling dictionary values using "." syntax
-''' python
+```python
 from box import ConfigBox
 
 # Create a ConfigBox object
@@ -28,8 +28,8 @@ d2 = ConfigBox({"key": "val", "key1": 1})
 
 # Accessing a value using dot notation
 print(d2.key1)
-'''
+```
 Output:
-''' python
+``` python
 1
-'''
+```
