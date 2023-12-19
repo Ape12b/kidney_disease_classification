@@ -29,6 +29,49 @@ python -m venv .venv
 ``` bash
 pip install -r .\requirements.txt
 ```
+## Model used: VGG-16 (Visual Geometry Group Model)
+
+![VGG-16](\research\images\vgg16.png)
+
+
+VGG-16 is a convolutional neural network (CNN) architecture proposed by the Visual Geometry Group at the University of Oxford. It gained popularity for its simplicity and effectiveness in image classification tasks. The "16" in VGG-16 refers to the total number of weight layers in the network.
+
+### Architecture
+
+- The network consists of 16 layers, including 13 convolutional layers and 3 fully connected layers.
+- Convolutional layers use small 3x3 filters with a stride of 1 and a padding of 1, maintaining spatial resolution.
+- Max-pooling layers with 2x2 filters and a stride of 2 are used for downsampling.
+
+### Depth
+
+- VGG-16 has a deep architecture, surpassing many previous models at the time of its introduction.
+
+### Filter Size and Stride
+
+- Convolutional layers use 3x3 filters with a stride of 1, capturing finer details.
+
+### Pooling
+
+- Max-pooling layers follow convolutional blocks, reducing spatial dimensions hierarchically.
+
+### Fully Connected Layers
+
+- Three fully connected layers with 4096, 4096, and 1000 neurons, respectively.
+- The last layer has 1000 neurons for the number of classes in the ImageNet dataset.
+
+### Activation Function
+
+- ReLU is used as the activation function, except for the output layer where softmax is applied.
+
+### Batch Normalization
+
+- Batch normalization is used to normalize activations for training stability.
+
+### Dropout
+
+- Dropout is applied in fully connected layers to reduce overfitting during training.
+
+VGG-16 achieved excellent results in the ImageNet Large Scale Visual Recognition Challenge (ILSVRC) 2014, demonstrating the effectiveness of deep CNNs for image classification tasks. While surpassed by newer architectures, VGG-16 remains a benchmark in deep learning development.
 
 
 ### Notes:

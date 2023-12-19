@@ -7,4 +7,5 @@ try:
     obj.main()
     logger.info(f">>>> {{DATA_INGESTION_STAGE_NAME}} has ended<<<<")
 except Exception as e:
+    logger.exception(e)
     raise e
