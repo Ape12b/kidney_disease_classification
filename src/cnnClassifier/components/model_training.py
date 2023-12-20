@@ -65,8 +65,6 @@ class ModelTraining:
         model.save(path)
     
     def train(self):
-        
-        self.model.summary()
         self.model.fit(
             self.train_ds,
             epochs=self.config.params_epochs,

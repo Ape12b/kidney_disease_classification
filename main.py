@@ -31,3 +31,12 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
+
+from cnnClassifier.pipeline.stage_04_model_evaluation import ModelEvaluationPipeline, STAGE_NAME as MODEL_EVAL_STAGE_NAME
+try:
+    logger.info(f">>>> {[MODEL_EVAL_STAGE_NAME]} has started<<<<")
+    obj = ModelEvaluationPipeline()
+    obj.main()
+    logger.info(f">>>> {[MODEL_EVAL_STAGE_NAME]} has ended<<<<")
+except Exception as e:
+    raise e
