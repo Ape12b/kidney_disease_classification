@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/data_science/kidney_disease_classification/mlruns/0/013423592b4b43c48e54eb2d94e5d810/artifacts
+end_time: 1703034415413
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 013423592b4b43c48e54eb2d94e5d810
+run_name: redolent-shoat-450
+run_uuid: 013423592b4b43c48e54eb2d94e5d810
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1703034410822
+status: 3
+tags: []
+user_id: apri4

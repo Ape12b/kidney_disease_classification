@@ -29,6 +29,27 @@ python -m venv .venv
 ``` bash
 pip install -r .\requirements.txt
 ```
+
+## Steps with DVC
+
+### 1. Create the dvc.yaml file
+
+``` bash
+dvc repro
+```
+
+If you run the command again without changing anything:
+
+``` bash
+dvc repro      
+Stage 'data_ingestion' didn't change, skipping
+Stage 'base_model_preparation' didn't change, skipping
+Stage 'model_training' didn't change, skipping
+Stage 'model_evaluation' didn't change, skipping
+Data and pipelines are up to date.
+
+```
+
 ## Model used: VGG-16 (Visual Geometry Group Model)
 
 ![VGG-16](/research/images/vgg16.png)
