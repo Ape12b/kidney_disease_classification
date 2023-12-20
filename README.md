@@ -35,6 +35,7 @@ pip install -r .\requirements.txt
 ### 1. Create the dvc.yaml file
 
 ``` bash
+dvc init
 dvc repro
 ```
 
@@ -47,7 +48,26 @@ Stage 'base_model_preparation' didn't change, skipping
 Stage 'model_training' didn't change, skipping
 Stage 'model_evaluation' didn't change, skipping
 Data and pipelines are up to date.
+```
+You can run dag command to look at the pipeline:
 
+``` bash
+$ dvc dag
++----------------+                  +------------------------+ 
+| data_ingestion |**                | base_model_preparation |
++----------------+  ******          +------------------------+
+         *                *******                *
+         *                       ******          *
+         *                             ****      *
+         **                             +----------------+
+           ****                         | model_training |
+               ***                      +----------------+
+                  ***                 ***
+                     ****         ****
+                         **     **
+                   +------------------+
+                   | model_evaluation |
+                   +------------------+
 ```
 
 ## Model used: VGG-16 (Visual Geometry Group Model)
