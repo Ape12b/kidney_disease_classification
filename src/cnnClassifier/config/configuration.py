@@ -70,8 +70,8 @@ class ConfigurationManager:
         create_directories([training.root_dir])
         
         evaluation_config = EvaluationConfig(
-            path_of_model=os.path.join("artifacts", "model_training", "model.hd5"),
-            training_data=os.path.join("artifacts", "data_ingestion", "raw", "kidney-ct-scan-image"),
+            path_of_model=self.config.model_training.trained_model_path,
+            training_data=os.path.join(self.config.data_ingestion.unzip_dir, "kidney-ct-scan-image"),
             all_params=self.params,
             mlflow_uri="https://dagshub.com/apri4u/kidney_disease_classification.mlflow",
             params_image_size=self.params.IMAGE_SIZE,

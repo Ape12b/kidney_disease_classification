@@ -1,1 +1,64 @@
-# Placeholder content
+stages:
+  data_ingestion:
+    cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+      - params.yaml
+      - src/cnnClassifier/utils
+      - src/cnnClassifier/components/data_ingestion.py
+      - src/cnnClassifier/config/configuration.py
+    outs:
+      - artifacts/data_ingestion/raw/kidney-ct-scan-image
+
+  base_model_preparation:
+    cmd: python src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
+      - config/config.yaml
+      - src/cnnClassifier/utils
+      - src/cnnClassifier/components/base_model_preparation.py
+      - src/cnnClassifier/config/configuration.py
+    params:
+      - IMAGE_SIZE
+      - INCLUDE_TOP
+      - CLASSES
+      - WEIGHTS
+      - LEARNING_RATE
+    outs:
+      - artifacts/base_model
+  
+  model_training:
+    cmd: python src/cnnClassifier/pipeline/stage_03_model_training.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_03_model_training.py
+      - artifacts/data_ingestion/raw/kidney-ct-scan-image
+      - artifacts/base_model
+      - config/config.yaml
+      - src/cnnClassifier/utils
+      - src/cnnClassifier/components/model_training.py
+      - src/cnnClassifier/config/configuration.py
+    params:
+      - IMAGE_SIZE
+      - EPOCHS
+      - BATCH_SIZE
+      - AUGMENTATION
+    outs:
+      - artifacts/model_training/model.h5
+  
+  model_evaluation:
+    cmd: python src/cnnClassifier/pipeline/stage_04_model_evaluation.py
+    deps:
+      - src/cnnClassifier/pipeline/stage_04_model_evaluation.py
+      - artifacts/data_ingestion/raw/kidney-ct-scan-image
+      - artifacts/model_training/model.h5
+      - config/config.yaml
+      - src/cnnClassifier/utils
+      - src/cnnClassifier/components/model_evaluation.py
+      - src/cnnClassifier/config/configuration.py
+    params:
+      - IMAGE_SIZE
+      - BATCH_SIZE
+    metrics:
+      - scores.json:
+          cache: false

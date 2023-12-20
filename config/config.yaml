@@ -8,10 +8,10 @@ data_ingestion:
 
 prepare_base_model:
   root_dir: artifacts/base_model
-  base_model_path: artifacts/base_model/raw/vgg16.hd5
-  updated_model_path: artifacts/base_model/updated/vgg16_updated.hd5
+  base_model_path: artifacts/base_model/raw/vgg16.h5
+  updated_model_path: artifacts/base_model/updated/vgg16_updated.h5
 
 model_training:
   root_dir: artifacts/model_training
-  trained_model_path: artifacts/model_training/model.hd5
+  trained_model_path: artifacts/model_training/model.h5
 
