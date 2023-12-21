@@ -45,7 +45,14 @@ stages:
       - AUGMENTATION
     outs:
       - artifacts/model_training/model.h5
-  
+  model_copying: 
+    cmd: python src/cnnClassifier/utils/copy_model.py
+    deps:
+      - src/cnnClassifier/utils/copy_model.py
+      - artifacts/model_training/model.h5
+    outs:
+      - model/model.h5
+    
   model_evaluation:
     cmd: python src/cnnClassifier/pipeline/stage_04_model_evaluation.py
     deps:
