@@ -132,7 +132,7 @@ stages:
       nfiles: 465
     - path: artifacts/model_training/model.h5
       hash: md5
-      md5: 95aff54539fecb2e3b39a22a8722f8ba
+      md5: 2e7d69b2e538c27ff4a19e67668e51c4
       size: 59337520
     - path: config/config.yaml
       hash: md5
@@ -152,9 +152,9 @@ stages:
       size: 916
     - path: src/cnnClassifier/utils
       hash: md5
-      md5: 79395aba410a16c65a0401848544b193.dir
-      size: 11142
-      nfiles: 4
+      md5: 966cffa41712dd38009c98c73581ebf2.dir
+      size: 11922
+      nfiles: 5
     params:
       params.yaml:
         BATCH_SIZE: 16
@@ -165,5 +165,21 @@ stages:
     outs:
     - path: scores.json
       hash: md5
-      md5: ae32aa0da1343a8bcd335d6c155d4909
-      size: 75
+      md5: 7856a6f053584d4ef2d1d74884aa7339
+      size: 74
+  model_copying:
+    cmd: python src/cnnClassifier/utils/copy_model.py
+    deps:
+    - path: artifacts/model_training/model.h5
+      hash: md5
+      md5: 2e7d69b2e538c27ff4a19e67668e51c4
+      size: 59337520
+    - path: src/cnnClassifier/utils/copy_model.py
+      hash: md5
+      md5: a2cef91be20fbe8a176be69f3cb9e79b
+      size: 780
+    outs:
+    - path: model/model.h5
+      hash: md5
+      md5: 2e7d69b2e538c27ff4a19e67668e51c4
+      size: 59337520
